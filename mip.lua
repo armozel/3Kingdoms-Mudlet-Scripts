@@ -2,6 +2,7 @@ mip = mip or {}
 mip.vitals = mip.vitals or {}
 
 -- This is to be used by the trigger in Mudlet with the perl regex value: #K%([0-9]{5,5})([0-9]{3,3})([A-Z]{3,3})
+-- The trigger must be set to match all
 function mip.parseMIPLine(matchesTable)  
   local step = 0
   local mLength
@@ -66,7 +67,6 @@ end
 
 function mip.setVitals(code, value)
   local hasUpdated = false
-  echo("\nmip.setVitals(" .. code .. ", " .. value .. ")\n")
   if code == "A" then
 		-- hp current
 		hasUpdated = true
