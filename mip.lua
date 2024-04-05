@@ -1,50 +1,25 @@
 mip = mip or {}
 mip.vitals = mip.vitals or {}
 
--- This is to be used by the trigger in Mudlet with the perl regex value: #K%([0-9]{5,5})([0-9]{3,3})([A-Z]{3,3})
--- The trigger must be set to match all
-function mip.parseMIPLine(matchesTable)  
-  local step = 0
-  local mLength
-  local mCode
-  for index, value in pairs(matchesTable) do
-  	if step == 2 then
-  		mLength = tonumber(value)
-  	elseif step == 3 then
-  		mCode = value
-  		local mLine = getCurrentLine()
-  		local mStart = string.find(mLine, "#K%%")
-  		local entry = string.sub(mLine, mStart, mStart + mLength + 10)
-  		mip.processMIP(mCode, entry)
-  		selectString(entry, 1)
-  		replace("")
-  	end
-  	if step == 3 then
-  		step = 0
-  	else
-  		step = step + 1
-  	end
-  end
-  if getCurrentLine() == "" then
-  	deleteLine()
-  end
-  if (doPrompt) then
-  	doPrompt()
-  end
+function mip:readMIP(code, lineLength)
+  local currentLine = getCurrentLine()
+  local entry = string.sub(currentLine, 15, lineLength + 14)
+  mip:processMIP(code, entry)
+  selectCurrentLine()
+  deleteLine()
 end
 
-function mip.processMIP(code, entry)
+function mip:processMIP(code, entry)
 	if code == "FFF" then
-		mip.processVitals(entry)
+		mip:processVitals(entry)
 	elseif code == "CAA" then
-		mip.processChatReceived(entry)
+		mip:processChatReceived(entry)
 	elseif code == "BAB" then
-		mip.processTellReceived(entry)
+		mip:processTellReceived(entry)
 	end
 end
 
-function mip.processVitals(entry)
-	entry = string.sub(entry, 15, -1)
+function mip:processVitals(entry)
 	local code, hasUpdated = false
   
 	for i, value in pairs(string.split(entry, "~")) do
@@ -53,19 +28,20 @@ function mip.processVitals(entry)
     -- being the value to be set and the code being all value indexes being modulus division with a remainder
     
     if i % 2 == 0 then
-      hasUpdated = mip.setVitals(code, value)
+      hasUpdated = mip:setVitals(code, value)
     else
       code = value    
     end
 
 	end
 
-	if not hasUpdated then return end
-	
+	if not isUpdated then return end
+  
+  echo("\nraising event mip.vitals\n")
 	raiseEvent("mip.vitals")
 end
 
-function mip.setVitals(code, value)
+function mip:setVitals(code, value)
   local hasUpdated = false
   if code == "A" then
 		-- hp current
@@ -131,10 +107,10 @@ function mip.setVitals(code, value)
   return hasUpdated
 end
 
-function mip.processChatReceived(entry)
+function mip:processChatReceived(entry)
 	-- TODO add functionality
 end
 
-function mip.processTellReceived(entry)
+function mip:processTellReceived(entry)
 	-- TODO add functionality
 end
