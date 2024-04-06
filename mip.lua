@@ -13,9 +13,9 @@ function mip:processMIP(code, entry)
 	if code == "FFF" then
 		mip:processVitals(entry)
 	elseif code == "CAA" then
-		mip:processChatReceived(entry)
+		--mip:processChatReceived(entry)
 	elseif code == "BAB" then
-		mip:processTellReceived(entry)
+		--mip:processTellReceived(entry)
 	end
 end
 
@@ -23,21 +23,19 @@ function mip:processVitals(entry)
 	local code, hasUpdated = false
   
 	for i, value in pairs(string.split(entry, "~")) do
-    -- code pairs are held in a tilde separated string for example A~100~B~100~C~100~D~100
-    -- which results in only the value indexes that have no remainder from modulus division (ex. 4 mod 2 = 0)
-    -- being the value to be set and the code being all value indexes being modulus division with a remainder
+		-- code pairs are held in a tilde separated string for example A~100~B~100~C~100~D~100
+		-- which results in only the value indexes that have no remainder from modulus division (ex. 4 mod 2 = 0)
+		-- being the value to be set and the code being all value indexes being modulus division with a remainder
     
-    if i % 2 == 0 then
-      hasUpdated = mip:setVitals(code, value)
-    else
-      code = value    
-    end
-
+		if i % 2 == 0 then
+		  hasUpdated = mip:setVitals(code, value)
+		else
+		  code = value    
+		end
 	end
 
-	if not isUpdated then return end
+	if not hasUpdated then return end
   
-  echo("\nraising event mip.vitals\n")
 	raiseEvent("mip.vitals")
 end
 
