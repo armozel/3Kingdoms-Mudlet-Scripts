@@ -1,0 +1,2 @@
+expandAlias("startMIP")
+disableTrigger("startup")

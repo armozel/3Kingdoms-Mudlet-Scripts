@@ -1,0 +1,10 @@
+{
+       "package": "3KingdomsMIPnGauges",
+       "title": "Scripts for 3Kingdoms MIP functionality and Gauges to parse character information",
+       "description": "",
+       "version": "",
+       "author": "Norea Armozel",
+       "icon": "",
+       "dependencies": "",
+       "outputFile": false
+}
