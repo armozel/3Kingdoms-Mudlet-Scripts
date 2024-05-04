@@ -231,7 +231,7 @@ if gauges3k.updateEventHandler then
 	killAnonymousEventHandler(gauges3k.updateEventHandler)
 end
 
-gauges3k.updateEventHandler = registerAnonymousEventHandler("mip.vitals", gauges3k.update)
+gauges3k.updateEventHandler = registerAnonymousEventHandler("mip.vitals", "gauges3k.update")
 
 --if gauges3k.saveEventHandler then
 --	killAnonymousEventHandler(gauges3k.saveEventHandler)
