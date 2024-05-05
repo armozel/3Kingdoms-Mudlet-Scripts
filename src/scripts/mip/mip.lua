@@ -150,9 +150,10 @@ function ThreeKlient.mip.readMIP(code, lineLength)
       -- ~Stout~woo
       -- ~Hsima~yo mamma sucks
       -- x~Hsima~yo mamma sucks
+      local mip = ThreeKlient.mip
       local entries = splitString(entry, "~")
       if #entries == 3 or #entries == 2 then
-          mip:parseTell(entries)
+          mip.parseTell(entries)
       else
           -- something is wrong?
           echo(tostring(#entries)..entry .. "\n")

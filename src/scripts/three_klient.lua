@@ -11,7 +11,6 @@ ThreeKlient.eventHandlers = {
     {"ThreeKlientInstalled", "ThreeKlient.ui.setup", nil},
     {"ThreeKlientInstall", "ThreeKlient.comm.setup", nil},
     {"ThreeKlientUninstalled", "ThreeKlient.ui.tearDown", nil},
-    {"ThreeKlientUninstalled", "ThreeKlient.comm.tearDown", nil},
 }
 
 function ThreeKlient.registerEventHandlers()
@@ -57,5 +56,3 @@ end
 registerNamedEventHandler(ThreeKlient.config.user, "ThreeKlientInstall", "sysInstall", onInstall)
 registerNamedEventHandler(ThreeKlient.config.user, "ThreeKlientLoad", "sysLoadEvent", onProfileLoad)
 registerNamedEventHandler(ThreeKlient.config.user, "ThreeKlientUinstall", "sysUninstall", onUninstall)
-
-

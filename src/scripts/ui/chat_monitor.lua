@@ -1,8 +1,7 @@
 ThreeKlient = ThreeKlient or {}
 ThreeKlient.ui = ThreeKlient.ui or {}
-ThreeKlient.comm = ThreeKlient.comm or {}
-ThreeKlient.comm.histPattern = ThreeKlient.ui.histPattern or "^(\d+):(\d+)"
-
+ThreeKlient.mip = ThreeKlient.mip or {}
+ThreeKlient.mip.histPattern = ThreeKlient.mip.histPattern or "^(\d+):(\d+)"
 
 ThreeKlient.ui.chatMonitor or ThreeKlient.ui.chatMonitor or Geyser.UserWindow:new({
     name = "ChatMonitor",
@@ -12,7 +11,7 @@ ThreeKlient.ui.chatMonitor or ThreeKlient.ui.chatMonitor or Geyser.UserWindow:ne
 })
 ThreeKlient.ui.chatMonitor.setFontSize("ChatMonitor", 20)
 
-function ThreeKlient.comm.parseChat(chatTable)
+function ThreeKlient.mip.parseChat(chatTable)
     local chatMonitor = ThreeKlient.ui.chatMonitor
     -- chatTable[1] is a short name of the chat line
     -- chatTable[2] is a prettier string for the line name?
@@ -22,7 +21,7 @@ function ThreeKlient.comm.parseChat(chatTable)
     -- ttsSpeak(monitorOutput)
 end
 
-function ThreeKlient.comm.parseTell(chatTable)
+function ThreeKlient.mip.parseTell(chatTable)
     local chatMonitor = ThreeKlient.ui.chatMonitor
     -- chatTable[1] is either an empty string (incoming tell) or x outgoing tell
     -- chatTable[2] is the target of the tell
