@@ -163,11 +163,27 @@ function mip:setVitals(code, value)
 end
 
 function mip:processChatReceived(entry)
-  -- xecho(entry)
+	-- hm~High Mortal~Hsima~Hsima <HM-Legend>: working with someone to implement mip in mudlet
+	local entries = splitString(entry, "~")
+	if #entries == 4 then
+		mip:parseChat(entries)
+	else
+		-- something is wrong?
+		echo(entry .. "\n")
+	end
 end
 
 function mip:processTellReceived(entry)
-	-- TODO add functionality
+	-- ~Stout~woo
+	-- ~Hsima~yo mamma sucks
+	-- x~Hsima~yo mamma sucks
+	local entries = splitString(entry, "~")
+	if #entries == 3 or #entries == 2 then
+		mip:parseTell(entries)
+	else
+		-- something is wrong?
+		echo(tostring(#entries)..entry .. "\n")
+	end
 end
 
 function mip:processImageReceived(entry)
