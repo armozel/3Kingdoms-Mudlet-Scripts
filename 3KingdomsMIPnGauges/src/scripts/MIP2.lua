@@ -52,32 +52,45 @@ function mip:processMIP(code, entry)
 
 end
 
+-- Function to split a string on a delimiter and return a table
+function splitString(inputstr, sep)
+    local t = {}
+    for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+        table.insert(t, str)
+    end
+    return t
+end
+
 function mip:processVitals(entry)
     local extras = nil
-	local hasUpdated = false
+	  local hasUpdated = false
 
-    -- Loop until the first character of entry is not ~
-    repeat
-		if (entry:sub(1, 1) == "~") then
-			entry = entry:sub(2) -- Remove the first character
-		end
-		if (entry:match("(%u)~%s*(%S+)")) then
-			local entry = entry:gsub("(%u)~%s*(%S+)", function(key, value)
-				if (mip:setVitals(key, value)) then
-					hasUpdated = true -- we really don't care if it returns false
-				end
-				return "" -- Replace matched pair with empty string
-			end)
-		end
-    until entry:sub(1, 1) ~= "~"
+    local entries = splitString(entry, "~")
 
-    -- Extract remaining extra data
-    extras = entry:gsub("^%s*(.-)%s*$", "%1") -- Remove leading and trailing whitespace
+    local i = 1
+    while i <= #entries do
+        local letter = entries[i]
+        local nextEntry = entries[i + 1]
+        -- echo(letter .. "|" .. nextEntry .. "\n")
+        -- Check if the letter is a capital letter A-M
+        if letter:match("[A-N]") then
+            -- Call setVitals with the current letter and next entry
+            if (mip:setVitals(letter, nextEntry)) then
+					    hasUpdated = true -- we really don't care if it returns false
+				    end
+            i = i + 2
+        else
+          echo(letter.."\n")
+          i = i + 1
+        end
 
-   echo('\n' .. extras .. '\n')
+        -- Skip to the next pair (letter, next entry)
+        
+    end
+
    if not hasUpdated then return end
 
-   echo("\nraising event mip.vitals\n")
+   --echo("\nraising event mip.vitals\n")
    raiseEvent("mip.vitals")
 end
 
@@ -150,11 +163,27 @@ function mip:setVitals(code, value)
 end
 
 function mip:processChatReceived(entry)
-  -- xecho(entry)
+	-- hm~High Mortal~Hsima~Hsima <HM-Legend>: working with someone to implement mip in mudlet
+	local entries = splitString(entry, "~")
+	if #entries == 4 then
+		mip:parseChat(entries)
+	else
+		-- something is wrong?
+		echo(entry .. "\n")
+	end
 end
 
 function mip:processTellReceived(entry)
-	-- TODO add functionality
+	-- ~Stout~woo
+	-- ~Hsima~yo mamma sucks
+	-- x~Hsima~yo mamma sucks
+	local entries = splitString(entry, "~")
+	if #entries == 3 or #entries == 2 then
+		mip:parseTell(entries)
+	else
+		-- something is wrong?
+		echo(tostring(#entries)..entry .. "\n")
+	end
 end
 
 function mip:processImageReceived(entry)
