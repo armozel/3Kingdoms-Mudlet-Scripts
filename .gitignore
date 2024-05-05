@@ -1,0 +1,4 @@
+build/
+.output
+notes.txt
+build.sh
