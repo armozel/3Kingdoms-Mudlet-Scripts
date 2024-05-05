@@ -1,26 +1,5 @@
 [
-       {
-              "isActive": "yes",
-              "isFolder": "no",
-              "name": "MIP2",
-              "script": ""
-       },
-       {
-              "isActive": "yes",
-              "isFolder": "no",
-              "name": "startup",
-              "script": ""
-       },
-       {
-              "isActive": "yes",
-              "isFolder": "no",
-              "name": "3K Gauges",
-              "script": ""
-       },
-       {
-              "isActive": "yes",
-              "isFolder": "no",
-              "name": "Chat Monitor Script",
-              "script": ""
-       }
+    {
+        "name" : "three klient"
+    }
 ]
