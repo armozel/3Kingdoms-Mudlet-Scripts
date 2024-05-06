@@ -92,9 +92,8 @@ function ThreeKlient.mip.readMIP(code, lineLength)
       end
   
      if not hasUpdated then return end
-  
-     --echo("\nraising event mip.vitals\n")
-     raiseEvent("mip.vitals")
+
+     raiseEvent("ThreeKlientCharVitals")
   end
   
   local vitalsCodeReverse = {

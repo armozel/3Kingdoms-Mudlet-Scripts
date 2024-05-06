@@ -3,14 +3,6 @@ ThreeKlient.ui = ThreeKlient.ui or {}
 ThreeKlient.mip = ThreeKlient.mip or {}
 ThreeKlient.mip.histPattern = ThreeKlient.mip.histPattern or "^(\d+):(\d+)"
 
-ThreeKlient.ui.chatMonitor or ThreeKlient.ui.chatMonitor or Geyser.UserWindow:new({
-    name = "ChatMonitor",
-    titleText ="My ChatPopup", -- only available since Mudlet 4.8+
-    x = "20%", y="20%",
-    width="30%", height ="50%",
-})
-ThreeKlient.ui.chatMonitor.setFontSize("ChatMonitor", 20)
-
 function ThreeKlient.mip.parseChat(chatTable)
     local chatMonitor = ThreeKlient.ui.chatMonitor
     -- chatTable[1] is a short name of the chat line
@@ -32,4 +24,14 @@ function ThreeKlient.mip.parseTell(chatTable)
         chatMonitor:echo( chatTable[2] .. " tells you: " .. chatTable[3].."\n")
     end
     -- ttsSpeak(monitorOutput)
+end
+
+function ThreeKlient.ui.setupChat()
+    ThreeKlient.ui.chatMonitor = ThreeKlient.ui.chatMonitor or Geyser.UserWindow:new({
+        name = "ChatMonitor",
+        titleText ="My ChatPopup", -- only available since Mudlet 4.8+
+        x = "20%", y="20%",
+        width="30%", height ="50%",
+    })
+    ThreeKlient.ui.chatMonitor.setFontSize("ChatMonitor", 20)
 end

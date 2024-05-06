@@ -2,20 +2,16 @@ ThreeKlient = ThreeKlient or {}
 ThreeKlient.config = ThreeKlient.config or { user = "ThreeKlient" }
 ThreeKlient.eventHandlers = {
     -- basic events
-    {"ThreeKlientLogin", "ThreeKlient.onLogin", nil},
-    {"ThreeKlientCharVitals", "ThreeKlient.character.vitalsUpdate", nil},
-    {"ThreeKlientTell", "ThreeKlient.comm.tellUpdate", nil},
-    {"ThreeKlientChat", "ThreeKlient.comm.chatUpdate", nil},
+    {"ThreeKlientCharVitals", "ThreeKlient.ui.onVitalsUpdate", nil},
 
     -- package events
     {"ThreeKlientInstalled", "ThreeKlient.ui.setup", nil},
-    {"ThreeKlientInstall", "ThreeKlient.comm.setup", nil},
     {"ThreeKlientUninstalled", "ThreeKlient.ui.tearDown", nil},
 }
 
 function ThreeKlient.registerEventHandlers()
     for i, v in ipairs(ThreeKlient.eventHandlers) do
-        if v[3] == then
+        if v[3] == nil then
             v[3] = registerAnonymousEventHandler(v[1], v[2])
         end
     end
@@ -23,14 +19,14 @@ end
 
 function ThreeKlient.deregisterEventHandlers()
     for i, v in ipairs(ThreeKlient.eventHandlers) do
-        if v[3] ~= then
+        if v[3] ~= nil then
             killAnonymousEventHandler(v[3])
         end
     end
 end
 
 local function onInstall(_, package)
-    if package ~= "@PKG_NAME@" then
+    if package ~= "@PKGNAME@" then
         return
     end
     ThreeKlient.registerEventHandlers()
@@ -39,7 +35,7 @@ local function onInstall(_, package)
 end
 
 local function onUninstall(_, package)
-    if package ~= "@PKG_NAME@" then
+    if package ~= "@PKGNAME@" then
         return
     end
     ThreeKlient.deregisterEventHandlers()

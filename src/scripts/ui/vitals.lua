@@ -1,13 +1,13 @@
 ThreeKlient = ThreeKlient or {}
 ThreeKlient.ui = ThreeKlient.ui or {}
-ThreeKlient.ui.vitalsContainer = ThreeKlient.ui.vitalsContainer or Adjustable.Container:new({name = "vitals"}) 
+ThreeKlient.ui.vitalsContainer = ThreeKlient.ui.vitalsContainer or Adjustable.Container:new({name = "vitals", autoLoad = false}) 
 ThreeKlient.ui.colorMap = ThreeKlient.ui.colorMap or {
   r = "red", y = "yellow", g = "green", c = "cyan", v = "violet"
 }
 ThreeKlient.ui.fontSize = ThreeKlient.ui.fontSize or 14
 ThreeKlient.ui.columns = ThreeKlient.ui.columns or 2
 
-local function replaceColor(color, value)
+function ThreeKlient.ui.replaceColor(color, value)
   if ThreeKlient.ui.colorMap[color] then
     color = ThreeKlient.ui.colorMap[color]
   else
@@ -16,8 +16,8 @@ local function replaceColor(color, value)
   return f[[<{color}>{value}<reset>]]
 end
 
-local function doColor(gline)
-  return string.gsub(gline, "<(.)([^>]+)>", replaceColor)
+function ThreeKlient.ui.doColor(gline)
+  return string.gsub(gline, "<(.)([^>]+)>", ThreeKlient.ui.replaceColor)
 end
 
 local function getGaugeCss(backgroundColor)
@@ -80,15 +80,15 @@ function ThreeKlient.ui.setupVitals()
       name = "vitalsSp",
       strict = true
     }, ui.gaugeContainers.sp),
-    gp1 = Geyser.Gauges:new({
+    gp1 = Geyser.Gauge:new({
       name = "vitalsGp1",
       strict = true
     }, ui.gaugeContainers.gp1),
-    gp2 = Geyser.Gauges:new({
+    gp2 = Geyser.Gauge:new({
       name = "vitalsGp2",
       strict = true
     }, ui.gaugeContainers.gp2),
-    enemyhp = Geyser.Gauges:new({
+    enemyhp = Geyser.Gauge:new({
       name = "vitalsEnemyHp",
       strict = true
     }, ui.gaugeContainers.enemyhp),
@@ -114,8 +114,8 @@ function ThreeKlient.ui.setupVitals()
   ui.gauges.gp2.back:setStyleSheet(getGaugeCss("black"))
   ui.gauges.gp2:setValue(100, 100, "<center>100</center>")
   
-  ui.gauges.enemyhp.front(getGaugeCss("maroon"))
-  ui.gauges.enemyhp.back(getGaugeCss("black"))
+  ui.gauges.enemyhp.front:setStyleSheet(getGaugeCss("maroon"))
+  ui.gauges.enemyhp.back:setStyleSheet(getGaugeCss("black"))
   ui.gauges.enemyhp:setValue(100, 100, "<center>Enemy</center>")
   
   ui.gauges.gline1:setStyleSheet([[
@@ -123,35 +123,6 @@ function ThreeKlient.ui.setupVitals()
     qproperty-alignment: 'AlignHCenter | AlignVCenter';
   ]])
   setFontSize(ui.fontSize)
-end
-
-function ThreeKlient.ui.onUpdateVitals()
-  local vitals = ThreeKlient.mip.vitals
-
-  if vitals.hpcur and vitals.hpmax then
-    updateVital("hp", vitals.hpcur, vitals.hpmax)
-  end
-  
-  if vitals.spcur and vitals.spmax then
-    updateVital("sp", vitals.spcur, vitals.spmax) 
-  end
-
-  if vitals.gp1cur and vitals.gp1max then
-    updateVital("gp1", vitals.gp1cur, vitals.gp1max)
-  end
-
-  if vitals.gp2cur and vitals.gp2max then
-    updateVital("gp2", vitals.gp2cur, vitals.gp2max) 
-  end
-
-  if vitals.enemyname and vitals.enemyhp then
-    updateVital("enemyhp", vitals.enemyhp, 100, vitals.enemyname)
-  end
-
-  if vitals.gline1 then
-    local gline1str = doColor(vitals.gline1)
-    ui.gauges.gline1:cecho(geline1str)
-  end
 end
 
 local function updateVital(vitalType, currentValue, maxValue, name)
@@ -174,3 +145,33 @@ local function updateVital(vitalType, currentValue, maxValue, name)
       gauge:setValue(currentValue, maxValue, gaugetext)
   end
 end
+
+function ThreeKlient.ui.onVitalsUpdate()
+  local vitals = ThreeKlient.mip.vitals
+
+  if vitals.hpcur and vitals.hpmax then
+    updateVital("hp", vitals.hpcur, vitals.hpmax, nil)
+  end
+  
+  if vitals.spcur and vitals.spmax then
+    updateVital("sp", vitals.spcur, vitals.spmax, nil) 
+  end
+
+  if vitals.gp1cur and vitals.gp1max then
+    updateVital("gp1", vitals.gp1cur, vitals.gp1max, nil)
+  end
+
+  if vitals.gp2cur and vitals.gp2max then
+    updateVital("gp2", vitals.gp2cur, vitals.gp2max, nil) 
+  end
+
+  if vitals.enemyname and vitals.enemyhp then
+    updateVital("enemyhp", vitals.enemyhp, 100, vitals.enemyname)
+  end
+
+  if vitals.gline1 then
+    local gline1str = ThreeKlient.ui.doColor(vitals.gline1)
+    ThreeKlient.ui.gauges.gline1:cecho(gline1str)
+  end
+end
+
