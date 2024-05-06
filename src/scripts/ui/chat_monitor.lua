@@ -33,5 +33,5 @@ function ThreeKlient.ui.setupChat()
         x = "20%", y="20%",
         width="30%", height ="50%",
     })
-    ThreeKlient.ui.chatMonitor.setFontSize("ChatMonitor", 20)
+    ThreeKlient.ui.chatMonitor:setFontSize(20)
 end
