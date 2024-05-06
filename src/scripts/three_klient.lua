@@ -3,10 +3,12 @@ ThreeKlient.config = ThreeKlient.config or { user = "ThreeKlient" }
 ThreeKlient.eventHandlers = {
     -- basic events
     {"ThreeKlientCharVitals", "ThreeKlient.ui.onVitalsUpdate", nil},
-
+    -- ui handlers
+    {"ThreeKlientLoaded", "ThreeKlient.ui.setup", nil},
     -- package events
     {"ThreeKlientInstalled", "ThreeKlient.ui.setup", nil},
     {"ThreeKlientUninstalled", "ThreeKlient.ui.tearDown", nil},
+    
 }
 
 function ThreeKlient.registerEventHandlers()
