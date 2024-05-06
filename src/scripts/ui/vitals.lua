@@ -1,23 +1,22 @@
 ThreeKlient = ThreeKlient or {}
 ThreeKlient.ui = ThreeKlient.ui or {}
-ThreeKlient.ui.vitalsContainer = ThreeKlient.ui.vitalsContainer or Adjustable.Container:new({name = "vitals", autoLoad = false}) 
+ThreeKlient.ui.vitalsContainer = ThreeKlient.ui.vitalsContainer or Adjustable.Container:new({name = "vitals"}) 
 ThreeKlient.ui.colorMap = ThreeKlient.ui.colorMap or {
   r = "red", y = "yellow", g = "green", c = "cyan", v = "violet"
 }
 ThreeKlient.ui.fontSize = ThreeKlient.ui.fontSize or 14
 ThreeKlient.ui.columns = ThreeKlient.ui.columns or 2
 
-function ThreeKlient.ui.replaceColor(color, value)
+local function replaceColor(color, value)
   if ThreeKlient.ui.colorMap[color] then
     color = ThreeKlient.ui.colorMap[color]
-  else
-    return f[[{color}-{value}]]
+    return "<" .. color .. ">" .. value .. "<reset>"
   end
-  return f[[<{color}>{value}<reset>]]
+  return color .. "-" .. value
 end
 
-function ThreeKlient.ui.doColor(gline)
-  return string.gsub(gline, "<(.)([^>]+)>", ThreeKlient.ui.replaceColor)
+local function doColor(gline)
+  return string.gsub(gline, "<(.)([^>]+)>", replaceColor)
 end
 
 local function getGaugeCss(backgroundColor)
@@ -170,7 +169,7 @@ function ThreeKlient.ui.onVitalsUpdate()
   end
 
   if vitals.gline1 then
-    local gline1str = ThreeKlient.ui.doColor(vitals.gline1)
+    local gline1str = doColor(vitals.gline1)
     ThreeKlient.ui.gauges.gline1:cecho(gline1str)
   end
 end
