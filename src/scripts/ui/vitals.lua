@@ -124,21 +124,25 @@ function ThreeKlient.ui.setupVitals()
   setFontSize(ui.fontSize)
 end
 
+local function updateVitalTitle(title)
+  local vitalsContainer = ThreeKlient.ui.vitalsContainer
+  if (title) then
+    vitalsContainer:setTitle(title)
+  end
+end
+
 local function updateVital(vitalType, currentValue, maxValue, name)
   local gauges = ThreeKlient.ui.gauges
   local gauge = gauges[vitalType]
-
-  -- if not nil reassign silently otherwise ensure it is nil
-  name = name or nil
-
+  local gaugetext = ""
   if gauge == nil then
     return
   end
 
-  local gaugetext = f[[<center>{currentValue}</center>]]
-
   if name ~= nil then
     gaugetext = f[[<center>{name}</center>]]
+  else
+    gaugetext =  f[[<center>{tostring(currentValue)}</center>]]
   end
 
   if currentValue > maxValue then
@@ -150,7 +154,10 @@ end
 
 function ThreeKlient.ui.onVitalsUpdate()
   local vitals = ThreeKlient.mip.vitals
-
+  if vitals.uptime and vitals.reboot and vitals.mudlag then
+    local title = "Uptime " .. vitals.uptime .. " Reboot in " .. vitals.reboot .. " (Mudlag " .. vitals.mudlag ..")"
+    updateVitalTitle(title)
+  end
   if vitals.hpcur and vitals.hpmax then
     updateVital("hp", vitals.hpcur, vitals.hpmax, nil)
   end
@@ -174,6 +181,9 @@ function ThreeKlient.ui.onVitalsUpdate()
   if vitals.gline1 then
     local gline1str = doColor(vitals.gline1)
     ThreeKlient.ui.gauges.gline1:cecho(gline1str)
+  end
+  if ThreeKlient.mip.vitalUpdateHook then
+    ThreeKlient.mip.vitalUpdateHook()
   end
 end
 
