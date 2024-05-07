@@ -128,6 +128,9 @@ local function updateVital(vitalType, currentValue, maxValue, name)
   local gauges = ThreeKlient.ui.gauges
   local gauge = gauges[vitalType]
 
+  -- if not nil reassign silently otherwise ensure it is nil
+  name = name or nil
+
   if gauge == nil then
     return
   end
