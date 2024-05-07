@@ -1,0 +1,10 @@
+[
+    {
+        "name": "mip",
+        "isActive": "yes"
+    }, 
+    {
+        "name": "startup",
+        "isActive": "yes"
+    }
+]

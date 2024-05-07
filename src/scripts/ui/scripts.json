@@ -1,0 +1,5 @@
+[
+    { "name" : "ui"}, 
+    {"name" : "chat monitor"},
+    {"name": "vitals"}
+]
