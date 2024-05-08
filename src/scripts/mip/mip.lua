@@ -92,7 +92,7 @@ function ThreeKlient.mip.readMIP(code, lineLength)
                       end
               i = i + 2
           else
-            echo(letter.."\n")
+            -- echo(letter.."\n")
             i = i + 1
           end
   
@@ -147,7 +147,7 @@ function ThreeKlient.mip.readMIP(code, lineLength)
     if isNumeric then
         mip.vitals[vitalCode] = tonumber(value)
     else
-        echo("\n"..vitalCode..':'..value.."\n")
+        -- echo("\n"..vitalCode..':'..value.."\n")
         mip.vitals[vitalCode] = value
     end
 
