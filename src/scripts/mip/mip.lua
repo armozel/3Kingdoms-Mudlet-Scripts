@@ -139,14 +139,15 @@ function ThreeKlient.mip.readMIP(code, lineLength)
         return false
     end
 
-    local notNumeric = 
+    local isNumeric = 
         vitalCode ~= "gline1" 
         and vitalCode ~= "gline2" 
         and vitalCode ~= "enemyname"
 
-    if notNumeric then
+    if isNumeric then
         mip.vitals[vitalCode] = tonumber(value)
     else
+        echo("\n"..vitalCode..':'..value.."\n")
         mip.vitals[vitalCode] = value
     end
 
