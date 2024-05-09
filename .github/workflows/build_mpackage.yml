@@ -1,0 +1,28 @@
+name: 3Klient Package Release Build
+
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Muddle
+        uses: demonnic/build-with-muddler@v1.3
+      - name: Publish mpackage to Releases
+        id: publish
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v0.0.1  # Specify your desired tag version
+          name: Release v0.0.1  # Specify release name
+          body: |
+            Test Release of 3Klient mpackage release
+          draft: false
+          prerelease: true
+          files: build/3Klient.mpackage
