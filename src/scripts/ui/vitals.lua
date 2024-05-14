@@ -95,6 +95,10 @@ function ThreeKlient.ui.setupVitals()
       name = "gline1Label",
       color = "black",
     }, ui.gaugeContainers.gline1),
+    gline2 = Geyser.Label:new({
+      name = "gline2Label",
+      color = "black",
+    }, ui.gaugeContainers.gline2),
   }
   
   ui.gauges.hp.front:setStyleSheet(getGaugeCss("green"))
@@ -121,42 +125,63 @@ function ThreeKlient.ui.setupVitals()
     color: 'black';
     qproperty-alignment: 'AlignHCenter | AlignVCenter';
   ]])
-  setFontSize(ui.fontSize)
+  ui.gauges.gline1:setFontSize(ui.fontSize)
+  ui.gauges.gline1:echo("gline1")
+  ui.gauges.gline2:setStyleSheet([[
+    color: 'black';
+    qproperty-alignment: 'AlignHCenter | AlignVCenter';
+  ]])
+  ui.gauges.gline2:setFontSize(ui.fontSize)
+  ui.gauges.gline2:echo("gline2")
+  setFontSize(ThreeKlient.ui.fontSize)
+end
+
+local function updateVitalTitle(title)
+  local vitalsContainer = ThreeKlient.ui.vitalsContainer
+  if (title) then
+    vitalsContainer:setTitle(title)
+  end
 end
 
 local function updateVital(vitalType, currentValue, maxValue, name)
   local gauges = ThreeKlient.ui.gauges
   local gauge = gauges[vitalType]
-
-  -- if not nil reassign silently otherwise ensure it is nil
-  name = name or nil
+  local gaugetext = ""
+  local isNumeric = vitalType ~= "gline1" 
+    and vitalType ~= "gline2"
 
   if gauge == nil then
     return
   end
 
-  local gaugetext = f[[<center>{currentValue}</center>]]
-
   if name ~= nil then
     gaugetext = f[[<center>{name}</center>]]
-  end
-
-  if currentValue > maxValue then
-      gauge:setValue(currentValue % maxValue, maxValue, gaugetext)
   else
-      gauge:setValue(currentValue, maxValue, gaugetext)
+    gaugetext =  f[[<center>{tostring(currentValue)}</center>]]
+  end
+  if isNumeric then
+    if currentValue > maxValue then
+        gauge:setValue(currentValue % maxValue, maxValue, gaugetext)
+    else
+        gauge:setValue(currentValue, maxValue, gaugetext)
+    end
+  else
+    gauge:echo(name)
   end
 end
 
 function ThreeKlient.ui.onVitalsUpdate()
   local vitals = ThreeKlient.mip.vitals
-
+  if vitals.uptime and vitals.reboot and vitals.mudlag then
+    local title = "Uptime " .. vitals.uptime .. " Reboot in " .. vitals.reboot .. " (Mudlag " .. vitals.mudlag ..")"
+    updateVitalTitle(title)
+  end
   if vitals.hpcur and vitals.hpmax then
     updateVital("hp", vitals.hpcur, vitals.hpmax, nil)
   end
   
   if vitals.spcur and vitals.spmax then
-    updateVital("sp", vitals.spcur, vitals.spmax, nil) 
+    updateVital("sp", vitals.spcur, vitals.spmax, nil)
   end
 
   if vitals.gp1cur and vitals.gp1max then
@@ -164,7 +189,7 @@ function ThreeKlient.ui.onVitalsUpdate()
   end
 
   if vitals.gp2cur and vitals.gp2max then
-    updateVital("gp2", vitals.gp2cur, vitals.gp2max, nil) 
+    updateVital("gp2", vitals.gp2cur, vitals.gp2max, nil)
   end
 
   if vitals.enemyname and vitals.enemyhp then
@@ -173,7 +198,16 @@ function ThreeKlient.ui.onVitalsUpdate()
 
   if vitals.gline1 then
     local gline1str = doColor(vitals.gline1)
-    ThreeKlient.ui.gauges.gline1:cecho(gline1str)
+    updateVital("gline1", nil, nil, gline1str)
+  end
+
+  if vitals.gline2 then
+    local gline2str = doColor(vitals.gline2)
+    updateVital("gline2", nil, nil, gline2str)
+  end
+
+  if ThreeKlient.mip.vitalUpdateHook then
+    ThreeKlient.mip.vitalUpdateHook()
   end
 end
 

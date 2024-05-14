@@ -9,7 +9,7 @@ ThreeKlient.mip.codes = ThreeKlient.mip.codes or {
 	CL_SEND_UPTIME    = 'AAF', -- CL_SEND_UPTIME		AAD	uptime		raw string
 	CL_SEND_AVI       = 'AAG', -- CL_SEND_AVI 	  	AAG	AVI				serialized table with keys: file, caption, height, width, iterations
 	CL_DOWNLOAD_MEDIA = 'AAH', -- CL_DOWNLOAD_MEDIA	AAH	Download		a serialized table with file and url keys.
-	CL_SEND_SPECIAL   = 'BAA', -- CL_SEND_SPECIAL 	  BAA	SendSpecial	raw string
+	CL_SEND_SPECIAL   = 'BAA', -- CL_SEND_SPECIAL 	BAA	SendSpecial	raw string
 	CL_SEND_TELL      = 'BAB', -- CL_SEND_TELL		  BAB	Tell				Serialized table with keys: incoming, from, text
 	CL_SEND_SPECIAL2  = 'BAC', -- CL_SEND_SPECIAL2 	BAC	SndSpecial2	raw string
 	CL_SEND_ROOM      = 'BAD', -- CL_SEND_ROOM	  	BAD	room				raw string (short decription) 
@@ -17,8 +17,8 @@ ThreeKlient.mip.codes = ThreeKlient.mip.codes or {
 	CL_SEND_EDIT      = 'BAF', -- CL_SEND_EDIT      BAF	Edit				raw string
 	CL_GP1_MASK       = 'BBA', -- CL_GP1_MASK 	  	BBA	gp1_mask		raw string
 	CL_GP2_MASK       = 'BBB', -- CL_GP2_MASK 	  	BBB	gp2_mask		raw string
-	CL_HP_MASK        = 'BBC', -- CL_HP_MASK 		BBC	hp_mask		raw string
-	CL_SP_MASK        = 'BBD', -- CL_SP_MASK 		BBD	sp_mask		raw string
+	CL_HP_MASK        = 'BBC', -- CL_HP_MASK 		    BBC	hp_mask		raw string
+	CL_SP_MASK        = 'BBD', -- CL_SP_MASK 		    BBD	sp_mask		raw string
 	CL_SEND_CAPTION   = 'CAP', -- CL_SEND_CAPTION 	CAP	caption		raw string 
              --		(If this is used, then (AAC), (AAF) and,  (BAE) literals are not)
 	-- CDF,                     -- CL_SEND_BEGIN_FILE	CDF	Begin_file	not forwarded, handled internally.
@@ -43,15 +43,24 @@ function ThreeKlient.mip.readMIP(code, lineLength)
   end
   
   function ThreeKlient.mip.processMIP(code, entry)
-      local mip = ThreeKlient.mip
-      if code == mip.codes["CL_SEND_HPBAR"] then
-          mip.processVitals(entry)
-      elseif code == mip.codes["CL_SEND_TELL"] then
-          mip.processTellReceived(entry)
+    local mip = ThreeKlient.mip
+    if code == mip.codes["CL_SEND_HPBAR"] then
+        mip.processVitals(entry)
+    elseif code == mip.codes["CL_SEND_TELL"] then
+        mip.processTellReceived(entry)
     elseif code == mip.codes["CL_SEND_CHAT"] then
-          mip.processChatReceived(entry)
-      end
-  
+        mip.processChatReceived(entry)
+    elseif code == mip.codes["CL_SEND_ROOMCODE"] then
+      mip:processExitsReceived(entry)
+    elseif code == mip.codes["CL_SEND_ROOM"] then
+      mip:processRoomReceived(entry)
+    elseif code == mip.codes["CL_SEND_REBOOT"] then
+      mip:processRebootReceived(entry)
+    elseif code == mip.codes["CL_SEND_MUDLAG"] then
+      mip:processMudlagReceived(entry)
+    elseif code == mip.codes["CL_SEND_UPTIME"] then
+      mip:processUptimeReceived(entry)
+    end   
   end
   
   -- Function to split a string on a delimiter and return a table
@@ -83,7 +92,7 @@ function ThreeKlient.mip.readMIP(code, lineLength)
                       end
               i = i + 2
           else
-            echo(letter.."\n")
+            -- echo(letter.."\n")
             i = i + 1
           end
   
@@ -92,7 +101,18 @@ function ThreeKlient.mip.readMIP(code, lineLength)
       end
   
      if not hasUpdated then return end
-
+      
+     -- This is a hook for external scripts to add for example you could put this in your guild script
+     -- where checkHP might trigger healing powers for example
+    --  function ThreeKlient.mip.vitalUpdateHook()
+    --   checkHP(tonumber(ThreeKlient.mip.vitals.hpcur), tonumber(ThreeKlient.mip.vitals.hpmax))
+    --   checkSP(tonumber(ThreeKlient.mip.vitals.spcur), tonumber(ThreeKlient.mip.vitals.spmax))
+    --   checkFort(tonumber(ThreeKlient.mip.vitals.gp1cur), tonumber(ThreeKlient.mip.vitals.gp1max))
+    --   doPerceive(ThreeKlient.mip.vitals.gp2cur)
+    --  end
+     if (mip.vitalUpdateHook) then
+        mip.vitalUpdateHook()
+     end
      raiseEvent("ThreeKlientCharVitals")
   end
   
@@ -119,15 +139,16 @@ function ThreeKlient.mip.readMIP(code, lineLength)
         return false
     end
 
-    local notNumeric = 
+    local isNumeric = 
         vitalCode ~= "gline1" 
         and vitalCode ~= "gline2" 
         and vitalCode ~= "enemyname"
 
-    if notNumeric then
+    if isNumeric then
         mip.vitals[vitalCode] = tonumber(value)
     else
-        mip.vitals[vitalCode] = value  
+        -- echo("\n"..vitalCode..':'..value.."\n")
+        mip.vitals[vitalCode] = value
     end
 
     return true
@@ -159,39 +180,37 @@ function ThreeKlient.mip.readMIP(code, lineLength)
       end
   end
   
-  function ThreeKlient.mip.processImageReceived(entry)
-    -- TODO add functionality
+  function ThreeKlient.mip:processUptimeReceived(event)
+    local mip = ThreeKlient.mip
+    if event ~= mip.vitals.uptime then
+      mip.vitals.uptime = event
+      raiseEvent("mip.vitals")
+    end
   end
-  
-  function ThreeKlient.mip.processMusicReceived(entry)
-    -- TODO add functionality
+
+  function ThreeKlient.mip:processRebootReceived(event)
+    local mip = ThreeKlient.mip
+    if event ~= mip.vitals.reboot then
+      mip.vitals.reboot = event
+      raiseEvent("mip.vitals")
+    end
   end
-  
-  function ThreeKlient.mip.processAVIReceived(entry)
-    -- TODO add functionality
-  end
-  
-  function ThreeKlient.mip.processDLRceived(entry)
-    -- TODO add functionality
+
+  function ThreeKlient.mip:processMudlagReceived(event)
+    local mip = ThreeKlient.mip
+    if event ~= mip.vitals.mudlag then
+      mip.vitals.mudlag = event
+      raiseEvent("mip.vitals")
+    end
   end
   
   function ThreeKlient.mip.processRoomReceived(entry)
-    -- TODO add functionality
-  end
-  
-  function ThreeKlient.mip.processBeginFileReceived(entry)
-    -- TODO add functionality
-  end
-  
-  function ThreeKlient.mip.processContFileReceived(entry)
-    -- TODO add functionality
-  end
-  
-  function ThreeKlient.mip.processEndFileReceived(entry)
+    local mip = ThreeKlient.mip
     -- TODO add functionality
   end
   
   function ThreeKlient.mip.processExitsReceived(entry)
+    local mip = ThreeKlient.mip
     -- TODO add functionality
   end
   

@@ -21,7 +21,7 @@ function ThreeKlient.mip.parseTell(chatTable)
     if chatTable[1]=="x" then
         chatMonitor:echo("You tell " .. chatTable[2] .. ": " .. chatTable[3].."\n")
     else
-        chatMonitor:echo( chatTable[2] .. " tells you: " .. chatTable[3].."\n")
+        chatMonitor:echo( chatTable[1] .. " tells you: " .. chatTable[2].."\n")
     end
     -- ttsSpeak(monitorOutput)
 end
@@ -31,7 +31,10 @@ function ThreeKlient.ui.setupChat()
         name = "ChatMonitor",
         titleText ="My ChatPopup", -- only available since Mudlet 4.8+
         x = "20%", y="20%",
-        width="30%", height ="50%",
+        height ="20%",
+        docked = true,
+        dockPosition = 'top', -- Possible dockPositions are left "l", right "r", top "t", bottom "b" and floating "f" 
+        autoWrap = true,
     })
     ThreeKlient.ui.chatMonitor:setFontSize(20)
 end
