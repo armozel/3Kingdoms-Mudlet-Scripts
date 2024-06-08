@@ -12,5 +12,12 @@
               "name": "start mip",
               "regex": "^startMIP$",
               "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "Reset 3Klient",
+              "regex": "^/reset all$",
+              "script": ""
        }
 ]

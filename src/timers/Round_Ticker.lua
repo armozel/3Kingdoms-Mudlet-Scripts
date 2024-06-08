@@ -13,7 +13,7 @@
     -- echo("\n"..vitals.gp2cur.."/"..vitals.gp2max)
     checkControlLevel(tonumber(vitals.gp2cur), tonumber(vitals.gp2max))
   end
-  if vitals.enemyname and string.len(vitals.enemyname) == 1 then
+  if vitals.enemyname and (string.len(vitals.enemyname) == 1 or vitals.enemyname == "Enemy") then
     inCombat = false
   else
     inCombat = true
