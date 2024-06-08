@@ -1,3 +1,14 @@
+-- Run these commands as your player to enable this script to work
+-- aset look_monster bkred
+-- aset room_short bkmagenta
+-- aset look_player bkgreen
+-- prompt >$nl$
+--  Corpse Trigger that looks something like:
+--     if ( corpseHog > 0 and ((matches[2] == 'Hsima') or (matches[2] == "Hsima's broodlings"))) then
+-- 		raiseEvent("walkerKillingBlow")
+-- 		inCombat = false
+-- 	end
+
 stepperBot = stepperBot or {}
 stepperBot.handlerID = stepperBot.handlerID or {}
 stepperBot.paths = stepperBot.paths or {}

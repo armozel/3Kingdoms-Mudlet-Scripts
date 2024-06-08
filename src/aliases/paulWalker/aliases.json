@@ -2,7 +2,7 @@
        {
               "isActive": "yes",
               "isFolder": "no",
-              "name": "PaulWalker",
+              "name": "step",
               "regex": "/step",
               "script": ""
        },
@@ -11,6 +11,20 @@
               "isFolder": "no",
               "name": "status",
               "regex": "^/status$",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "hunt",
+              "regex": "^/hunt",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "loadBot",
+              "regex": "/loadBot (.*)",
               "script": ""
        }
 ]

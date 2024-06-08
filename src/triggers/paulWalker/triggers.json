@@ -53,8 +53,8 @@
               "highlightBG": "#ffff00",
               "patterns": [
                      {
-                            "pattern": "^PLAYER_(.*)",
-                            "type": "regex"
+                            "pattern": "IGNORE,2",
+                            "type": "colour"
                      }
               ],
               "script": ""
