@@ -51,15 +51,15 @@ function ThreeKlient.mip.readMIP(code, lineLength)
     elseif code == mip.codes["CL_SEND_CHAT"] then
         mip.processChatReceived(entry)
     elseif code == mip.codes["CL_SEND_ROOMCODE"] then
-      mip:processExitsReceived(entry)
+      mip.processExitsReceived(entry)
     elseif code == mip.codes["CL_SEND_ROOM"] then
-      mip:processRoomReceived(entry)
+      mip.processRoomReceived(entry)
     elseif code == mip.codes["CL_SEND_REBOOT"] then
-      mip:processRebootReceived(entry)
+      mip.processRebootReceived(entry)
     elseif code == mip.codes["CL_SEND_MUDLAG"] then
-      mip:processMudlagReceived(entry)
+      mip.processMudlagReceived(entry)
     elseif code == mip.codes["CL_SEND_UPTIME"] then
-      mip:processUptimeReceived(entry)
+      mip.processUptimeReceived(entry)
     end   
   end
   
@@ -180,7 +180,7 @@ function ThreeKlient.mip.readMIP(code, lineLength)
       end
   end
   
-  function ThreeKlient.mip:processUptimeReceived(event)
+  function ThreeKlient.mip.processUptimeReceived(event)
     local mip = ThreeKlient.mip
     if event ~= mip.vitals.uptime then
       mip.vitals.uptime = event
@@ -188,7 +188,7 @@ function ThreeKlient.mip.readMIP(code, lineLength)
     end
   end
 
-  function ThreeKlient.mip:processRebootReceived(event)
+  function ThreeKlient.mip.processRebootReceived(event)
     local mip = ThreeKlient.mip
     if event ~= mip.vitals.reboot then
       mip.vitals.reboot = event
@@ -196,7 +196,7 @@ function ThreeKlient.mip.readMIP(code, lineLength)
     end
   end
 
-  function ThreeKlient.mip:processMudlagReceived(event)
+  function ThreeKlient.mip.processMudlagReceived(event)
     local mip = ThreeKlient.mip
     if event ~= mip.vitals.mudlag then
       mip.vitals.mudlag = event
@@ -205,12 +205,12 @@ function ThreeKlient.mip.readMIP(code, lineLength)
   end
   
   function ThreeKlient.mip.processRoomReceived(entry)
-    local mip = ThreeKlient.mip
-    -- TODO add functionality
+    map.prompt.room = entry
   end
   
   function ThreeKlient.mip.processExitsReceived(entry)
-    local mip = ThreeKlient.mip
-    -- TODO add functionality
+    entry = string.gsub(entry, "~", ",")
+    map.prompt.exits = entry
+    raiseEvent("onNewRoom",entry or "")
   end
   

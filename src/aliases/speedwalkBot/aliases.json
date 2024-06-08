@@ -1,0 +1,30 @@
+[
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "speedwalk from",
+              "regex": "/home",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "speedwalk from",
+              "regex": "/home (.*)",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "speedwalk to",
+              "regex": "^/go (.*)",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "speedwalk list",
+              "regex": "/dirs",
+              "script": ""
+       }
+]

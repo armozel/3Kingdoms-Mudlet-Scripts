@@ -28,7 +28,7 @@ function ThreeKlient.deregisterEventHandlers()
 end
 
 local function onInstall(_, package)
-    if package ~= "@PKGNAME@" then
+    if package ~= "3Klient" then
         return
     end
     ThreeKlient.registerEventHandlers()
@@ -37,7 +37,7 @@ local function onInstall(_, package)
 end
 
 local function onUninstall(_, package)
-    if package ~= "@PKGNAME@" then
+    if package ~= "3Klient" then
         return
     end
     ThreeKlient.deregisterEventHandlers()

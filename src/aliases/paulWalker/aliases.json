@@ -2,13 +2,15 @@
        {
               "isActive": "yes",
               "isFolder": "no",
-              "name": "mip",
+              "name": "PaulWalker",
+              "regex": "/step",
               "script": ""
        },
        {
               "isActive": "yes",
               "isFolder": "no",
-              "name": "startup",
+              "name": "status",
+              "regex": "^/status$",
               "script": ""
        }
 ]

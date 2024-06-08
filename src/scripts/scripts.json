@@ -1,5 +1,14 @@
 [
-    {
-        "name" : "three klient"
-    }
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "three klient",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "Deadman",
+              "script": ""
+       }
 ]
