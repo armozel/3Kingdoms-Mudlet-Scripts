@@ -21,7 +21,7 @@
        },
        {
               "name": "startup",
-              "isActive": "yes",
+              "isActive": "no",
               "isFolder": "no",
               "multiline": "no",
               "multilineDelta": "0",
