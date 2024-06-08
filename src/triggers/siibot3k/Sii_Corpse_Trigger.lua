@@ -7,6 +7,7 @@ if ( corpseHog > 0 and (#matches > 1) and ((matches[2] == 'Hsima') or (matches[2
    send("divvy gold")
 end
 -- These things will always happen if something dies in the room
+local vitals = ThreeKlient.mip.vitals
 if vitals.enemyname and string.len(vitals.enemyname) > 1 then
  inCombat = false
  ThreeKlient.mip.vitals.enemyname = 'E'
