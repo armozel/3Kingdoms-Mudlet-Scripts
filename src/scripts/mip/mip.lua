@@ -205,12 +205,16 @@ function ThreeKlient.mip.readMIP(code, lineLength)
   end
   
   function ThreeKlient.mip.processRoomReceived(entry)
-    map.prompt.room = entry
+    if map then
+      map.prompt.room = entry
+    end
   end
   
   function ThreeKlient.mip.processExitsReceived(entry)
     entry = string.gsub(entry, "~", ",")
-    map.prompt.exits = entry
-    raiseEvent("onNewRoom",entry or "")
+    if map then
+      map.prompt.exits = entry
+      raiseEvent("onNewRoom",entry or "")
+    end
   end
   
