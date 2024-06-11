@@ -1,1 +1,0 @@
-setTankName(matches[2])

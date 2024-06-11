@@ -1,1 +1,0 @@
-send('mitigate '..string.lower(matches[2]))
