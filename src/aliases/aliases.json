@@ -3,7 +3,7 @@
               "isActive": "yes",
               "isFolder": "no",
               "name": "stopBot",
-              "regex": "/stop",
+              "regex": "^/stop$",
               "script": ""
        },
        {
