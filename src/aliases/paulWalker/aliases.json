@@ -3,7 +3,7 @@
               "isActive": "yes",
               "isFolder": "no",
               "name": "step",
-              "regex": "/step",
+              "regex": "^/step$",
               "script": ""
        },
        {
@@ -17,14 +17,14 @@
               "isActive": "yes",
               "isFolder": "no",
               "name": "hunt",
-              "regex": "^/hunt",
+              "regex": "^/hunt$",
               "script": ""
        },
        {
               "isActive": "yes",
               "isFolder": "no",
               "name": "loadBot",
-              "regex": "/loadBot (.*)",
+              "regex": "^/loadBot (.*)",
               "script": ""
        }
 ]
