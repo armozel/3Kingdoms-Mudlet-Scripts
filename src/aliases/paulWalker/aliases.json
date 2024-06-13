@@ -24,7 +24,7 @@
               "isActive": "yes",
               "isFolder": "no",
               "name": "loadBot",
-              "regex": "^/loadBot (.*)",
+              "regex": "^/load (.*)",
               "script": ""
        }
 ]
