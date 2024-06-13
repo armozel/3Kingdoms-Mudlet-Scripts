@@ -16,7 +16,7 @@ stepperBot.badmobs = stepperBot.badmobs or {}
 stepperBot.partyMembers = stepperBot.partyMembers or {}
 stepperBot.fighting = stepperBot.fighting or false
 
-stepperBot.partyMembers = { "uq", "eddy", "eagleeyes" }
+stepperBot.partyMembers = { "hsima", "uq", "eddy", "eagleeyes", "hawkeyes" }
 stepperBot.badmobs = { "ron", "broodling", "storm servant", "valithyn", 
     "kinky-looking black mamba", "tholen", "white barn owl", "wandering spider",
     "tiny silver toaster", "avatar of", "aerial servant", "storm servant",

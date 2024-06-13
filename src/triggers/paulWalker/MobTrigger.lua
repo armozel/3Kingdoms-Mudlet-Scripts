@@ -1,6 +1,3 @@
-if walker_active then
-  deleteLine()
-end -- if
 local function t_has(tab, value)
   for i,v in ipairs(tab) do
     if string.match(value, v) then
