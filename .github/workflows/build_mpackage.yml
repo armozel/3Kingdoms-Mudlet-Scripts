@@ -12,9 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Muddle 3Klient
-        uses: demonnic/build-with-muddler@v1.3
+        uses: demonnic/build-with-muddler@v1.4
       - name: Muddle Siibot
-        uses: demonnic/build-with-muddler@v1.3
+        uses: demonnic/build-with-muddler@v1.4
         with:
           workingDir: ${{ github.workspace }}/siibot3k
       - name: Publish mpackage to Releases
