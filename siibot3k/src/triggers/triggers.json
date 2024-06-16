@@ -81,7 +81,7 @@
        },
        {
               "name": "Sii Corpse Trigger",
-              "isActive": "no",
+              "isActive": "yes",
               "isFolder": "no",
               "multiline": "no",
               "multilineDelta": "0",
@@ -95,10 +95,6 @@
                      {
                             "pattern": "(\\w+) dealt the killing blow to",
                             "type": "regex"
-                     },
-                     {
-                            "pattern": "Hsima's broodlings dealt the killing blow to Red Rabbit.",
-                            "type": "substring"
                      }
               ],
               "script": ""
