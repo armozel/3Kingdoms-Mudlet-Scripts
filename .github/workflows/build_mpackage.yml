@@ -16,17 +16,19 @@ jobs:
       - name: Muddle Siibot
         uses: demonnic/build-with-muddler@v1.3
         with:
-          workingDir: siibot3k
+          workingDir: ${{ github.workspace }}/siibot3k
       - name: Publish mpackage to Releases
         id: publish
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.0.1  # Specify your desired tag version
-          name: Release v0.0.1  # Specify release name
+          tag_name: v0.1.0  # Specify your desired tag version
+          name: Release v0.1.0  # Specify release name
           body: |
             Test Release of 3Klient mpackage release
           draft: false
           prerelease: true
-          files: build/3Klient.mpackage
+          files: |
+            build/3Klient.mpackage
+            siibot3k/build/siibot3k.mpackage
