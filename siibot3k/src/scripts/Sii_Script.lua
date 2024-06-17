@@ -373,7 +373,6 @@ function dogCheck(dogHP, maxDogHP, happiness, hunger)
 end
 
 function checkSP(currentSP, maxSP)
-
   okSP = maxSP * .9
   dyingSP = maxSP * .2
   if (debugFlag) then
@@ -392,7 +391,10 @@ end
 
 function checkFort(currentFort, maxFort)
 
- 
+  if (maxFort == 0) then
+	return -- remerging and nothing maters
+  end
+
   okFort = maxFort * .9
   lowFort = maxFort * .8
   dyingFort = 100

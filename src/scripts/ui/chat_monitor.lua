@@ -1,26 +1,33 @@
 ThreeKlient = ThreeKlient or {}
 ThreeKlient.ui = ThreeKlient.ui or {}
 ThreeKlient.mip = ThreeKlient.mip or {}
-ThreeKlient.mip.histPattern = ThreeKlient.mip.histPattern or "^(\d+):(\d+)"
 
 function ThreeKlient.mip.parseChat(chatTable)
     local chatMonitor = ThreeKlient.ui.chatMonitor
+    local block = false
     -- chatTable[1] is a short name of the chat line
     -- chatTable[2] is a prettier string for the line name?
     -- chatTable[3] is the name of the character who originated the chat
     -- chatTable[4] is the original chat
+    for index, value in ipairs(ThreeKlient.mip.chatFilter) do
+        if value.match(chatTable[4], value) then
+            -- I think this will just ignore the chat
+            return
+        end
+    end
     chatMonitor:echo(chatTable[4].."\n")
     -- ttsSpeak(monitorOutput)
 end
 
 function ThreeKlient.mip.parseTell(chatTable)
     local chatMonitor = ThreeKlient.ui.chatMonitor
+    local chatFilter = ThreeKlient.mip.chatFilter
     -- chatTable[1] is either an empty string (incoming tell) or x outgoing tell
     -- chatTable[2] is the target of the tell
     -- chatTable[3] is the content of the tell
     if chatTable[1]=="x" then
         chatMonitor:echo("You tell " .. chatTable[2] .. ": " .. chatTable[3].."\n")
-    else
+    elseif chatTable[1] ~= 'you' then -- weird bug on 3k, get double emote with lower case you target
         chatMonitor:echo( chatTable[1] .. " tells you: " .. chatTable[2].."\n")
     end
     -- ttsSpeak(monitorOutput)
@@ -38,3 +45,8 @@ function ThreeKlient.ui.setupChat()
     })
     ThreeKlient.ui.chatMonitor:setFontSize(20)
 end
+
+ThreeKlient.mip.chatFilter = {
+    Gold_Divvy_1 = 'GOLD divvy called',
+    Gold_Divvy_2 = 'All gold divvied'
+}

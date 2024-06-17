@@ -1,7 +1,8 @@
 -- These things will always happen if something dies in the room
 local vitals = ThreeKlient.mip.vitals
 inCombat = false
-ThreeKlient.mip.vitals.enemyname = 'Enemy'
+vitals.enemyhp = 100
+vitals.enemyname = 'Enemy'
 ThreeKlient.ui.onVitalsUpdate()
 
 if walker_active then
