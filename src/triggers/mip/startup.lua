@@ -1,4 +1,4 @@
 inCombat = false
-expandAlias("stopBot")
+expandAlias("/stop")
 expandAlias("startMIP")
 disableTrigger("startup")
