@@ -2,6 +2,13 @@
        {
               "isActive": "yes",
               "isFolder": "no",
+              "name": "stopBot",
+              "regex": "^/stop$",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
               "name": "step",
               "regex": "^/step$",
               "script": ""
