@@ -1,6 +1,6 @@
 ThreeKlient = ThreeKlient or {}
 ThreeKlient.ui = ThreeKlient.ui or {}
-ThreeKlient.ui.vitalsContainer = ThreeKlient.ui.vitalsContainer or Adjustable.Container:new({name = "vitals", autoLoad = false}) 
+ThreeKlient.ui.vitalsContainer = ThreeKlient.ui.vitalsContainer or Adjustable.Container:new({name = "vitals", autoLoad = true}) 
 ThreeKlient.ui.colorMap = ThreeKlient.ui.colorMap or {
   r = "red", y = "yellow", g = "green", c = "cyan", v = "violet"
 }

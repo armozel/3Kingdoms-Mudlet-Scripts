@@ -161,75 +161,80 @@ stepperBot.paths["dundee2"] = {"e", "get all;glance", "n", "get all;glance", "n"
      "w", "get all;glance", "w", "get all;glance", "w", "get all;glance", "w", "get all;glance",
      "w", "get all;glance", "w", "get all;glance", "n", "get all;glance", "n", "get all;glance",
      "w" }
-stepperBot.paths["mammon"] = { "n", "e", "e", "ne", "n", "n", "n", "n", "n", "n", "w", "w", "w", "w", "w", "w", "s", "s", "s",
-      "s", "s", "s", "e", "e", "e", "e", "n", "n", "n", "n", "w", "w", "s", "w", "e", "s", "e", "w", "n", "n", "e", "e", "s", 
-      "s", "s", "s", "w", "w", "w", "w", "n", "n", "n", "n", "n", "n", "e", "e", "e", "e", "e", "e", "s", "s", "s", "s", "s", 
-      "s", "sw", "w", "w", "s" }
+stepperBot.paths["mammon"] = { "n", "e", "e", "ne", "n", "n", "n", "n", "n", "n", "w", "w", "w", 
+  "w", "w", "w", "s", "s", "s", "s", "s", "s", "e", "e", "e", "e", "n", "n", "n", "n", "w", "w", 
+  "s", "w", "e", "s", "e", "w", "n", "n", "e", "e", "s", "s", "s", "s", "w", "w", "w", "w", "n", 
+  "n", "n", "n", "n", "n", "e", "e", "e", "e", "e", "e", "s", "s", "s", "s", "s", "s", "sw", "w", 
+  "w", "s" 
+}
 stepperBot.paths["battleground"] = { "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w", "n",
-        "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w", "n",
-        "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w", "n",
-        "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w",
-        "s", "s", "s", "s", "s", "s", "s" }
+  "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w", "n",
+  "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w", "n",
+  "e", "e", "e", "e", "e", "e", "e", "n", "w", "w", "w", "w", "w", "w", "w",
+  "s", "s", "s", "s", "s", "s", "s" 
+}
 stepperBot.paths["wh"] = { "w", "w", "n", "n", "s", "s", "w", "u",
-		"e", "n", "e", "w", "n", "n", "e", "n", "w", "e", "e",
-		"w", "s", "e", "e", "n", "s", "w", "s", "w", "e", "s",
-		"s", "w", "e", "e", "n", "n", "s", "s", "e", "u", "w",
-		"w", "n", "enter", "n", "n", "w", "w", "s", "s", "e",
-		"n", "se", "s", "s", "e", "e", "d", "d", "w", "w", 
-		"n", "n", "e", "n", "s", "w", "n", "n", "e", "w", "w", "e",
-		"s", "w", "w", "e", "e", "s", "s", "w", "n", "s", "e", "s" }
+  "e", "n", "e", "w", "n", "n", "e", "n", "w", "e", "e",
+  "w", "s", "e", "e", "n", "s", "w", "s", "w", "e", "s",
+  "s", "w", "e", "e", "n", "n", "s", "s", "e", "u", "w",
+  "w", "n", "enter", "n", "n", "w", "w", "s", "s", "e",
+  "n", "se", "s", "s", "e", "e", "d", "d", "w", "w", 
+  "n", "n", "e", "n", "s", "w", "n", "n", "e", "w", "w", "e",
+  "s", "w", "w", "e", "e", "s", "s", "w", "n", "s", "e", "s" 
+}
 stepperBot.paths["chess"] = { "w", "w", "w", "s", "s", "s", "e", "e", "e", "e", "e", "e", "e",
-		"n", "w", "w", "w", "w", "w", "w", "n", "e", "e", "e", "e", "e", "e",
-		"n", "w", "w", "w", "w", "w", "w", "n", "e", "e", "e", "e", "e", "e",
-		"n", "w", "w", "w", "w", "w", "w", "n", "e", "e", "e", "e", "e", "e",
-		"n", "w", "w", "w", "w", "w", "w", "w",  "s", "s", "s", "s", "e", "e", "e" }
+  "n", "w", "w", "w", "w", "w", "w", "n", "e", "e", "e", "e", "e", "e",
+  "n", "w", "w", "w", "w", "w", "w", "n", "e", "e", "e", "e", "e", "e",
+  "n", "w", "w", "w", "w", "w", "w", "n", "e", "e", "e", "e", "e", "e",
+  "n", "w", "w", "w", "w", "w", "w", "w",  "s", "s", "s", "s", "e", "e", "e" 
+}
 stepperBot.paths["z"] = { "nw", "s", "s", "n", "e", "e", "s", "d",  -- 00
-        "w", "sw", "se", "e", "u", -- 01
-        "s", "s", "e", "e", "u", -- 02
-        "e", "w", "n", "ne", "w", "w", "u", -- 04
-        "n", "n", "sw",	"nw", "s", "s", "u", -- 06
-        "n", "e", "e", "nw", "u", -- 05
-        "e", "e", "w", "s", "s", "d", -- 07
-        "s", "n", "n", "se", "se", "n", "n", "s", "u", -- 11
-        "e", "e", "sw", "s", "u", -- 09
-        "n", "n", "sw", "w", "s", "d", -- 06
-        "w", "w", "s", "s", "e", "e", "n", "w", "d", -- 12
-        "s", "s", "ne", "ne", "s", "s", "u", -- 14
-        "w", "w", "n", "n", "e", "s", "n", "e", "d", 
-        "w", "w", "s", "s", "e", "e", "d", 
-        "se", "s", "n", "w", "w", "s", "d", 
-        "n", "s", "s", "n", "e", "e", "s", "n", "n", "se", "e", "e", "se", "se", "proceed", 
-        "sw", "s", "d", "n", "n", "se", "se", "n", "n", "u", 
-        "s", "s", "nw", "nw", "d", 
-        "e", "e", "sw", "w", "s", "e", "e", "u", 
-        "e", "e", "sw", "s", "u",  
-        "w", "w", "s", "e", "e", "s", "w", "w", "d", 
-        "sw", "s", "d", "n", "n", "se", "se", "n", "n", "d", 
-        "se", "s", "w", "d", "n", "n", "e", "d", 
-        "w", "s", "e", "e", "d", "n", "nw", "u", 
-        "s", "s", "n", "w", "nw", "s", "s", "u", 
-        "s", "s", "ne", "ne", "s", "s", "d", 
-        "sw", "s", "u", "se", "s", "d", 
-        "w", "ne", "w", "n", "e", "e", "u", 
-        "w", "w", "s", "s", "e", "e", "n", "w", "u", 
-        "n", "n", "se", "ne", "s", "s", "d", 
-        "e", "w", "w", "s", "e", "sw", "e", "e", "e", "e", "proceed", 
-        "s", "w", "d", "s", "se", "n", "e", "n", "u", 
-		"w", "w", "s", "e", "w", "s", "e", "e", "d", 
-		"n", "e", "nw", "e", "e", "d", 
-		"s", "n", "e", "se", "n", "n", "d", 
-		"w", "w", "s", "e", "w", "s", "e", "e", "d", 
-		"n", "w", "w", "s", "enter portal", 
-		"w", "w", "n", "n", "u", "s", "se", "ne", "n", "d", 
-		"e", "w", "w", "n", "e", "ne", "w", "w", "d", 
-		"se", "n", "n", "s", "w", "w", "s", "n", "n", "d", 
-		"e", "nw", "nw", "e", "d", 
-		"w", "w", "s", "e", "e", "s", "w", "w", "u", 
-		"w", "w", "enter portal", "n", "e", "s", "w", "w", "n", "n", "e", "e", "d", 
-		"se", "w", "s", "e", "e", "d", 
-		"se", "w", "w", "n", "d", 
-		"n", "nw", "se", "ne", "e", "e", "e", "se", "se", "e", "e", "ne", "e" 
-		}
+  "w", "sw", "se", "e", "u", -- 01
+  "s", "s", "e", "e", "u", -- 02
+  "e", "w", "n", "ne", "w", "w", "u", -- 04
+  "n", "n", "sw",	"nw", "s", "s", "u", -- 06
+  "n", "e", "e", "nw", "u", -- 05
+  "e", "e", "w", "s", "s", "d", -- 07
+  "s", "n", "n", "se", "se", "n", "n", "s", "u", -- 11
+  "e", "e", "sw", "s", "u", -- 09
+  "n", "n", "sw", "w", "s", "d", -- 06
+  "w", "w", "s", "s", "e", "e", "n", "w", "d", -- 12
+  "s", "s", "ne", "ne", "s", "s", "u", -- 14
+  "w", "w", "n", "n", "e", "s", "n", "e", "d", -- 16
+  "w", "w", "s", "s", "e", "e", "d", -- 18
+  "se", "s", "n", "w", "w", "s", "d", -- 17
+  "n", "s", "s", "n", "e", "e", "s", "n", "n", "se", "e", "e", "se", "se", "proceed", -- 19, skip if manual
+  "sw", "s", "d", "n", "n", "se", "se", "n", "n", "u", -- 20, 21
+  "s", "s", "nw", "nw", "d", -- 24
+  "e", "e", "sw", "w", "s", "e", "e", "u", -- 25
+  "e", "e", "sw", "s", "u", -- 28
+  "w", "w", "s", "e", "e", "s", "w", "w", "d", -- 29
+  "sw", "s", "d", "n", "n", "se", "se", "n", "n", "d", -- 20, 21, skip to here
+  "se", "s", "w", "d", "n", "n", "e", "d", -- 30, 31
+  "w", "s", "e", "e", "d", "n", "nw", "u", -- 32, 33
+  "s", "s", "n", "w", "nw", "s", "s", "u", -- 34
+  "s", "s", "ne", "ne", "s", "s", "d", -- 23
+  "sw", "s", "u", "se", "s", "d", -- 20, 22
+  "w", "ne", "w", "n", "e", "e", "u", -- 35
+  "w", "w", "s", "s", "e", "e", "n", "w", "u", -- 36
+  "n", "n", "se", "ne", "s", "s", "d", -- 38
+  "e", "w", "w", "s", "e", "sw", "e", "e", "e", "e", "proceed", -- 39
+  "s", "w", "d", "s", "se", "n", "e", "n", "u", -- 40, 41
+  "w", "w", "s", "e", "w", "s", "e", "e", "d", -- 44
+  "n", "e", "nw", "e", "e", "d", -- 45
+  "s", "n", "e", "se", "n", "n", "d", -- 46
+  "w", "w", "s", "e", "w", "s", "e", "e", "d", -- 48
+  "n", "w", "w", "s", "enter portal", -- 47
+  "w", "w", "n", "n", "u", "s", "se", "ne", "n", "d", -- 49, 41
+  "e", "w", "w", "n", "e", "ne", "w", "w", "d", -- 43
+  "se", "n", "n", "s", "w", "w", "s", "n", "n", "d", -- 51
+  "e", "nw", "nw", "e", "d", -- 52
+  "w", "w", "s", "e", "e", "s", "w", "w", "u", -- 53
+  "w", "w", "enter portal", "n", "e", "s", "w", "w", "n", "n", "e", "e", "d", -- 54, 56
+  "se", "w", "s", "e", "e", "d", -- 57
+  "se", "w", "w", "n", "d", -- 58
+  "n", "nw", "se", "ne", "e", "e", "e", "se", "se", "e", "e", "ne", "e" -- 59
+  }
 stepperBot.paths["aegis"] = { "e", "e", "s", "e", "e", "s", "w", "s", "w", "n",
 	"w", "s", "e", "s", "e", "s", "e", "n", "e", "s", "e", "e",
 	"n", "w", "s", "w", "n", "n", "e", "e", "n", "w", "n", "w",
@@ -359,6 +364,17 @@ function walker_kill(event, mob)
     end
     send("kill "..mob,true)
 end
+
+function stepperBot.onExit()
+  inCombat = false
+  expandAlias("/stop")
+  saveWindowLayout()
+end
+
+if stepperBot.handlerID.onExit then killAnonymousEventHandler(stepperBot.handlerID.onExit) end
+stepperBot.handlerID.onExit = registerAnonymousEventHandler("sysExitEvent", stepperBot.onExit)
+if stepperBot.handlerID.onDisconnect then killAnonymousEventHandler(stepperBot.handlerID.onDisconnect) end
+stepperBot.handlerID.onDisconnect = registerAnonymousEventHandler("sysDisconnectionEvent", stepperBot.onExit)
 if stepperBot.handlerID.walkerKillingBlow then killAnonymousEventHandler(stepperBot.handlerID.walkerKillingBlow) end
 stepperBot.handlerID.walkerKillingBlow = registerAnonymousEventHandler("walkerKillingBlow", "walker_kb")
 if stepperBot.handlerID.walkerKill then killAnonymousEventHandler(stepperBot.handlerID.walkerKill) end
