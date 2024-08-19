@@ -23,8 +23,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v0.1.0  # Specify your desired tag version
-          name: Release v0.1.0  # Specify release name
+          tag_name: v0.2.0  # Specify your desired tag version
+          name: Release v0.2.0  # Specify release name
           body: |
             Test Release of 3Klient mpackage release
           draft: false
