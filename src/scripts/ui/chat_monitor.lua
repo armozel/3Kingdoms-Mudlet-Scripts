@@ -48,7 +48,10 @@ function ThreeKlient.ui.setupChat()
         dockPosition = 'top', -- Possible dockPositions are left "l", right "r", top "t", bottom "b" and floating "f" 
         autoWrap = true,
     })
-    ThreeKlient.ui.chatMonitor:setFontSize(14)
+    -- set font and size to the main window values
+    ThreeKlient.ui.chatMonitor:setFont(getFont("main"))
+    ThreeKlient.ui.chatMonitor:setFontSize(getFontSize("main"))
+    
 end
 
 ThreeKlient.mip.chatFilter = {
