@@ -2,6 +2,11 @@ ThreeKlient = ThreeKlient or {}
 ThreeKlient.ui = ThreeKlient.ui or {}
 ThreeKlient.mip = ThreeKlient.mip or {}
 
+ThreeKlient.mip.chatFilter = {
+    Gold_Divvy_1 = 'GOLD divvy called',
+    Gold_Divvy_2 = 'All gold divvied'
+}
+
 function ThreeKlient.mip.parseChat(chatTable)
     local chatMonitor = ThreeKlient.ui.chatMonitor
     local block = false
@@ -10,7 +15,7 @@ function ThreeKlient.mip.parseChat(chatTable)
     -- chatTable[3] is the name of the character who originated the chat
     -- chatTable[4] is the original chat
     for index, value in ipairs(ThreeKlient.mip.chatFilter) do
-        if value.match(chatTable[4], value) then
+        if value.find(chatTable[4], value) ~= nil then
             -- I think this will just ignore the chat
             return
         end
@@ -43,7 +48,7 @@ function ThreeKlient.ui.setupChat()
         dockPosition = 'top', -- Possible dockPositions are left "l", right "r", top "t", bottom "b" and floating "f" 
         autoWrap = true,
     })
-    ThreeKlient.ui.chatMonitor:setFontSize(20)
+    ThreeKlient.ui.chatMonitor:setFontSize(14)
 end
 
 ThreeKlient.mip.chatFilter = {

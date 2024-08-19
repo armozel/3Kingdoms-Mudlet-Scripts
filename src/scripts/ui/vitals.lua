@@ -122,6 +122,7 @@ function ThreeKlient.ui.setupVitals()
   ui.gauges.enemyhp:setValue(100, 100, "<center>Enemy</center>")
   
   ui.gauges.gline1:setStyleSheet([[
+    background-color: 'black';
     color: 'black';
     qproperty-alignment: 'AlignHCenter | AlignVCenter';
   ]])
@@ -129,6 +130,7 @@ function ThreeKlient.ui.setupVitals()
   ui.gauges.gline1:echo("gline1")
   ui.gauges.gline2:setStyleSheet([[
     color: 'black';
+    background-color: 'black';
     qproperty-alignment: 'AlignHCenter | AlignVCenter';
   ]])
   ui.gauges.gline2:setFontSize(ui.fontSize)
