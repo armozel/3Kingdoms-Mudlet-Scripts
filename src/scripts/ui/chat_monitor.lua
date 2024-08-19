@@ -14,7 +14,7 @@ function ThreeKlient.mip.parseChat(chatTable)
     -- chatTable[2] is a prettier string for the line name?
     -- chatTable[3] is the name of the character who originated the chat
     -- chatTable[4] is the original chat
-    for index, value in ipairs(ThreeKlient.mip.chatFilter) do
+    for index, value in pairs(ThreeKlient.mip.chatFilter) do
         if value.find(chatTable[4], value) ~= nil then
             -- I think this will just ignore the chat
             return
