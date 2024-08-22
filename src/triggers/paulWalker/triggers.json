@@ -1,26 +1,6 @@
 [
        {
-              "name": "MIP Capture",
-              "isActive": "yes",
-              "isFolder": "no",
-              "multiline": "no",
-              "multilineDelta": "0",
-              "matchall": "yes",
-              "filter": "no",
-              "fireLength": "0",
-              "highlight": "no",
-              "highlightFG": "#ff0000",
-              "highlightBG": "#ffff00",
-              "patterns": [
-                     {
-                            "pattern": "#K%([0-9]{5,5})([0-9]{3,3})([A-Z]{3,3})",
-                            "type": "regex"
-                     }
-              ],
-              "script": ""
-       },
-       {
-              "name": "startup",
+              "name": "RoomTrigger",
               "isActive": "yes",
               "isFolder": "no",
               "multiline": "no",
@@ -33,12 +13,48 @@
               "highlightBG": "#ffff00",
               "patterns": [
                      {
-                            "pattern": "3Kingdoms welcomes you!",
-                            "type": "substring"
-                     },
+                            "pattern": "IGNORE,5",
+                            "type": "colour"
+                     }
+              ],
+              "script": ""
+       },
+       {
+              "name": "MobTrigger",
+              "isActive": "yes",
+              "isFolder": "no",
+              "multiline": "no",
+              "multilineDelta": "0",
+              "matchall": "no",
+              "filter": "no",
+              "fireLength": "0",
+              "highlight": "no",
+              "highlightFG": "#ff0000",
+              "highlightBG": "#ffff00",
+              "patterns": [
                      {
-                            "pattern": "3Kingdoms welcomes you back from linkdeath.",
-                            "type": "substring"
+                            "pattern": "IGNORE,1",
+                            "type": "colour"
+                     }
+              ],
+              "script": ""
+       },
+       {
+              "name": "PlayerTrigger",
+              "isActive": "yes",
+              "isFolder": "no",
+              "multiline": "no",
+              "multilineDelta": "0",
+              "matchall": "no",
+              "filter": "no",
+              "fireLength": "0",
+              "highlight": "no",
+              "highlightFG": "#ff0000",
+              "highlightBG": "#ffff00",
+              "patterns": [
+                     {
+                            "pattern": "IGNORE,2",
+                            "type": "colour"
                      }
               ],
               "script": ""

@@ -1,0 +1,37 @@
+[
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "stopBot",
+              "regex": "^/stop$",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "step",
+              "regex": "^/step$",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "status",
+              "regex": "^/status$",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "hunt",
+              "regex": "^/hunt$",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "loadBot",
+              "regex": "^/load (.*)",
+              "script": ""
+       }
+]

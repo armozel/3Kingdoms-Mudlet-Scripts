@@ -1,10 +1,14 @@
 [
-    {
-        "name": "mip",
-        "isActive": "yes"
-    }, 
-    {
-        "name": "startup",
-        "isActive": "yes"
-    }
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "mip",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "startup",
+              "script": ""
+       }
 ]

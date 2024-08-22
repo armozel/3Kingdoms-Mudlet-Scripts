@@ -1,5 +1,20 @@
 [
-    { "name" : "ui"}, 
-    {"name" : "chat monitor"},
-    {"name": "vitals"}
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "ui",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "chat monitor",
+              "script": ""
+       },
+       {
+              "isActive": "yes",
+              "isFolder": "no",
+              "name": "vitals",
+              "script": ""
+       }
 ]

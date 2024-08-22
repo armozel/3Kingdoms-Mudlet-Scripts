@@ -1,0 +1,12 @@
+[
+       {
+              "isActive": "yes",
+              "name": "Round Ticker",
+              "command": "",
+              "hours": "0",
+              "minutes": "0",
+              "seconds": "2",
+              "milliseconds": "0",
+              "script": ""
+       }
+]

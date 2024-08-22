@@ -6,9 +6,11 @@ function ThreeKlient.ui.setup()
   ThreeKlient.ui.setupVitals()
   ThreeKlient.ui.setupChat()
   ThreeKlient.ui.show()
+  loadWindowLayout()
 end
 
 function ThreeKlient.ui.tearDown()
+  saveWindowLayout()
   ThreeKlient.ui.hide()
   ThreeKlient.ui = nil
 end

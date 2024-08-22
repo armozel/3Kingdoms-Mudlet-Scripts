@@ -2,22 +2,22 @@
        {
               "isActive": "yes",
               "isFolder": "no",
-              "name": "stopBot",
-              "regex": "^/stop$",
+              "name": "speedwalk from",
+              "regex": "/home",
               "script": ""
        },
        {
               "isActive": "yes",
               "isFolder": "no",
-              "name": "start mip",
-              "regex": "^startMIP$",
+              "name": "speedwalk to",
+              "regex": "^/go (.*)",
               "script": ""
        },
        {
               "isActive": "yes",
               "isFolder": "no",
-              "name": "Reset 3Klient",
-              "regex": "^/reset all$",
+              "name": "speedwalk list",
+              "regex": "/dirs",
               "script": ""
        }
 ]
